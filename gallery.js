@@ -124,7 +124,14 @@ class Gallery {
         };
     };
     photosOther(i){
-        
+        this.info(i);
+        this.galleryChildren[4].classList.add("more");
+        const text = `＋${this.galleryChildren.length-5}`;
+        this.galleryChildren[4].insertAdjacentHTML('beforeend', `<p><a href="#">${text}</a></p>`);
+        for(let e=5;e<this.galleryChildren.length;e++){
+            this.galleryChildren[e].style.display="none";
+        };
+        this.photos5(i);
     }
     doing(i){
         this.info(i)
