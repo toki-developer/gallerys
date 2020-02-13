@@ -6,9 +6,7 @@ class Gallery {
             this.doing(i);
         }
     }
-    
     info(i){
-
         this.gallerys = document.querySelectorAll(this.classname);
         this.galleryChildren = this.gallerys[i].children;
         this.galleryCount = this.galleryChildren.length;
@@ -16,38 +14,18 @@ class Gallery {
         this.FirstImg = this.galleryFirst.firstElementChild.firstElementChild;
         this.firstWidth = this.FirstImg.naturalWidth;
         this.firstHeight = this.FirstImg.naturalHeight;
-
         this.styleP = this.gallerys[i].style;
         this.style1 =this.galleryFirst.style;
-
         this.gallery2 = this.galleryChildren[1];
         this.gallery3 = this.galleryChildren[2];
         this.gallery4 = this.galleryChildren[3];
         this.gallery5 = this.galleryChildren[4];
-
-        
     };
-    
     twoOver(i){
         this.info(i);
         this.ThirdW = this.gallery3.firstElementChild.firstElementChild.naturalWidth;
         this.ThirdH = this.gallery3.firstElementChild.firstElementChild.naturalHeight;
     };
-
-
-    // 分割代入バージョン===========
-
-    // twoOver(i){
-    //     this.info(i);
-    //     const { firstElementChild } = this.gallery3;
-    //     const { naturalWidth, naturalHeight } = firstElementChild;
-    //     this.ThirdW = naturalWidth;
-    //     this.ThirdH = naturalHeight;
-    // };
-
-    // ================
-
-
     photos2(i){
         this.info(i)
         if(this.firstWidth>=this.firstHeight){
@@ -56,7 +34,6 @@ class Gallery {
             this.styleP.gridTemplateColumns ="1fr 1fr";
         };
     };
-
     photos3(i){
         this.twoOver(i);
         this.styleP.gridTemplateColumns ="1fr 1fr";
@@ -70,7 +47,6 @@ class Gallery {
                 this.style1.gridColumn="1/3";
             };
     };
-
     photos4(i){
         this.twoOver(i);
         if(this.firstHeight*2/3>this.firstWidth){
@@ -95,7 +71,6 @@ class Gallery {
         }
 
     };
-
     photos5(i){
         this.twoOver(i);
         this.style5 =this.gallery5.style;
@@ -133,8 +108,6 @@ class Gallery {
 
         };
     };
-
-
     doing(i){
         this.info(i)
         switch(this.galleryCount){
@@ -153,17 +126,5 @@ class Gallery {
                 this.photos5(i);
                 break;
         }
-        
     }
-
-
-
-
 };
-
-// const mygallery= new Gallery(".js-gallery");
-// mygallery.doing(1);
-// mygallery.doing(2);
-// mygallery.doing(3);
-// mygallery.doing(4);
-// mygallery.doing(5);
