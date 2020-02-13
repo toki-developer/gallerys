@@ -26,18 +26,26 @@ class Gallery {
         this.ThirdW = this.gallery3.firstElementChild.firstElementChild.naturalWidth;
         this.ThirdH = this.gallery3.firstElementChild.firstElementChild.naturalHeight;
     };
+    photos1(i){
+        this.info(i)
+        this.styleP.gridTemplateRows ="100%";
+        this.styleP.gridTemplateColumns ="100%";
+    }
     photos2(i){
         this.info(i)
         if(this.firstWidth>=this.firstHeight){
             this.styleP.gridTemplateRows ="50% 50%";
+            this.styleP.gridTemplateColumns ="100%";
         }else{
-            this.styleP.gridTemplateColumns ="1fr 1fr";
+            this.styleP.gridTemplateColumns ="50% 50%";
+            this.styleP.gridTemplateRows ="100%";
         };
     };
     photos3(i){
         this.twoOver(i);
-        this.styleP.gridTemplateColumns ="1fr 1fr";
+        this.styleP.gridTemplateColumns ="50% 50%";
             if(this.firstHeight>this.firstWidth){
+                this.styleP.gridTemplateRows =" 50% 50%";
                 this.style1.gridRow="1/3";
             }else if(this.firstHeight>=this.firstWidth*3/5){
                 this.styleP.gridTemplateRows =" 62% 38%";
@@ -50,23 +58,23 @@ class Gallery {
     photos4(i){
         this.twoOver(i);
         if(this.firstHeight*2/3>this.firstWidth){
-            this.styleP.gridTemplateColumns ="4fr 3fr";
-            this.styleP.gridTemplateRows ="1fr 1fr 1fr";
+            this.styleP.gridTemplateColumns ="57% 43%";
+            this.styleP.gridTemplateRows ="repeat(3,33.33%)";
             this.style1.gridRow="1/4";
         }else if(this.firstHeight*3/4>this.firstWidth){
-            this.styleP.gridTemplateColumns ="2fr 1fr";
-            this.styleP.gridTemplateRows ="1fr 1fr 1fr";
+            this.styleP.gridTemplateColumns ="66.67% 33.33%";
+            this.styleP.gridTemplateRows ="repeat(3,33.33%)";
             this.style1.gridRow="1/4";
         }else if(this.firstHeight>this.firstWidth*3/4){
-            this.styleP.gridTemplateColumns ="1fr 1fr";
-            this.styleP.gridTemplateRows ="1fr 1fr";
+            this.styleP.gridTemplateColumns ="50% 50%";
+            this.styleP.gridTemplateRows ="50% 50%";
         }else if(this.firstHeight>this.firstWidth*2/3){
-            this.styleP.gridTemplateColumns ="1fr 1fr 1fr";
-            this.styleP.gridTemplateRows ="2fr 1fr";
+            this.styleP.gridTemplateColumns ="repeat(3,33.33%)";
+            this.styleP.gridTemplateRows ="66.67% 33.33%";
             this.style1.gridColumn="1/4";
         }else{
-            this.styleP.gridTemplateColumns ="1fr 1fr 1fr";
-            this.styleP.gridTemplateRows ="4fr 3fr";
+            this.styleP.gridTemplateColumns ="repeat(3,33.33%)";
+            this.styleP.gridTemplateRows ="71% 29%";
             this.style1.gridColumn="1/4";
         }
 
@@ -78,7 +86,9 @@ class Gallery {
         this.style3 =this.gallery3.style;
         this.style2 =this.gallery2.style;
 
-        if(this.firstHeight*2/3>this.firstWidth){
+        if(this.firstHeight>this.firstWidth){
+            this.styleP.gridTemplateColumns ="repeat(6,16.66%)";
+            this.styleP.gridTemplateRows ="66.67% 33.33%";
             this.style1.gridColumn="1/4";
             this.style2.gridColumn="4/7";
             this.style3.gridColumn="1/3";
@@ -86,12 +96,16 @@ class Gallery {
             this.style5.gridColumn="5/7";
         }else if(this.firstHeight>this.firstWidth*2/3){
             if(this.ThirdH>this.ThirdW){
+                this.styleP.gridTemplateColumns ="repeat(6,16.66%)";
+                this.styleP.gridTemplateRows ="50% 50%";
                 this.style1.gridColumn="1/4";
                 this.style2.gridColumn="4/7";
                 this.style3.gridColumn="1/3";
                 this.style4.gridColumn="3/5";
                 this.style5.gridColumn="5/7";
             }else{
+                this.styleP.gridTemplateRows ="repeat(6,16.66%)";
+                this.styleP.gridTemplateColumns="50% 50%";
                 this.style1.gridRow="1/4";
                 this.style2.gridRow="4/7";
                 this.style3.gridRow="1/3";
@@ -99,7 +113,8 @@ class Gallery {
                 this.style5.gridRow="5/7";
             };
         }else{
-            this.styleP.gridTemplateColumns ="2fr 1fr";
+            this.styleP.gridTemplateColumns ="66.67% 33.33%";
+            this.styleP.gridTemplateRows ="repeat(6,16.66%)";
             this.style1.gridRow="1/4";
             this.style2.gridRow="4/7";
             this.style3.gridRow="1/3";
@@ -108,10 +123,14 @@ class Gallery {
 
         };
     };
+    photosOther(i){
+        
+    }
     doing(i){
         this.info(i)
         switch(this.galleryCount){
             case 1:
+                this.photos1(i);
                 break;
             case 2:
                 this.photos2(i);
@@ -124,6 +143,9 @@ class Gallery {
                 break;
             case 5:
                 this.photos5(i);
+                break;
+            default:
+                this.photosOther(i);
                 break;
         }
     }
