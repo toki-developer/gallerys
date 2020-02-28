@@ -1,30 +1,52 @@
 class Gallery {
-    constructor(classname){
+    constructor(classname,{photopadding}){
         this.classname = classname;
+        this.photopadding = photopadding;
         this.doing(0);
         for(let i=0;i<this.gallerys.length;i++){
             this.doing(i);
         }
+       
     }
     info(i){
         this.gallerys = document.querySelectorAll(this.classname);
         this.galleryChildren = this.gallerys[i].children;
         this.galleryCount = this.galleryChildren.length;
-        this.galleryFirst = this.galleryChildren[0];
-        this.FirstImg = this.galleryFirst.firstElementChild.firstElementChild;
-        this.firstWidth = this.FirstImg.naturalWidth;
-        this.firstHeight = this.FirstImg.naturalHeight;
+        const galleryFirst = this.galleryChildren[0];
+
+        let FirstImg = galleryFirst;
+
+        while(FirstImg.hasChildNodes()){
+            FirstImg =FirstImg.firstElementChild;
+        }
+
+        this.firstWidth =FirstImg.naturalWidth;
+        this.firstHeight =FirstImg.naturalHeight;
         this.styleP = this.gallerys[i].style;
-        this.style1 =this.galleryFirst.style;
+        this.style1 =galleryFirst.style;
         this.gallery2 = this.galleryChildren[1];
         this.gallery3 = this.galleryChildren[2];
         this.gallery4 = this.galleryChildren[3];
         this.gallery5 = this.galleryChildren[4];
+
+        const galleryChildArray=Array.from(this.galleryChildren);
+        galleryChildArray.map((item)=>{
+            item.style.padding=this.photopadding;
+        })
+
+
     };
     twoOver(i){
         this.info(i);
-        this.ThirdW = this.gallery3.firstElementChild.firstElementChild.naturalWidth;
-        this.ThirdH = this.gallery3.firstElementChild.firstElementChild.naturalHeight;
+
+        let thirdImg = this.gallery3;
+
+        while(thirdImg.hasChildNodes()){
+            thirdImg =thirdImg.firstElementChild;
+        }
+
+        this.ThirdW = thirdImg.naturalWidth;
+        this.ThirdH = thirdImg.naturalHeight;
     };
     photos1(i){
         this.info(i)
